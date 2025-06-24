@@ -1,0 +1,2 @@
+# example-wasi
+WASI example
