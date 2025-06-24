@@ -1,0 +1,10 @@
+package example:calculator;
+
+interface calc {
+    add: func(a: s32, b: s32) -> s32;
+}
+
+world calculator {
+    include wasi:cli/imports@0.2.5;
+    export calc;
+}

@@ -1,0 +1,11 @@
+[package]
+name = "cmd"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+wit-bindgen = "0.42.1"
+
+[[bin]]
+name = "cmd"
+path = "src/main.rs"

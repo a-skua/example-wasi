@@ -1,0 +1,5 @@
+package example:cmd;
+
+world root {
+    import example:calculator/calc;
+}
