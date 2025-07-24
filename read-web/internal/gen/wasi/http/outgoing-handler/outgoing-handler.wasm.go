@@ -8,6 +8,12 @@ import (
 
 // This file contains wasmimport and wasmexport declarations for "wasi:http@0.2.5".
 
-//go:wasmimport wasi:http/outgoing-handler@0.2.5 handle
-//go:noescape
-func wasmimport_Handle(request0 uint32, options0 uint32, options1 uint32, result *cm.Result[ErrorCodeShape, FutureIncomingResponse, ErrorCode])
+//go:wasmexport wasi:http/outgoing-handler@0.2.5#handle
+//export wasi:http/outgoing-handler@0.2.5#handle
+func wasmexport_Handle(request0 uint32, options0 uint32, options1 uint32) (result *cm.Result[ErrorCodeShape, FutureIncomingResponse, ErrorCode]) {
+	request := cm.Reinterpret[OutgoingRequest]((uint32)(request0))
+	options := lift_OptionRequestOptions((uint32)(options0), (uint32)(options1))
+	result_ := Exports.Handle(request, options)
+	result = &result_
+	return
+}

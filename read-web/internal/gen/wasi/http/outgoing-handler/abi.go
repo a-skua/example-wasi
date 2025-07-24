@@ -13,12 +13,9 @@ type ErrorCodeShape struct {
 	shape [unsafe.Sizeof(ErrorCode{})]byte
 }
 
-func lower_OptionRequestOptions(v cm.Option[RequestOptions]) (f0 uint32, f1 uint32) {
-	some := v.Some()
-	if some != nil {
-		f0 = 1
-		v1 := cm.Reinterpret[uint32](*some)
-		f1 = (uint32)(v1)
+func lift_OptionRequestOptions(f0 uint32, f1 uint32) (v cm.Option[RequestOptions]) {
+	if f0 == 0 {
+		return
 	}
-	return
+	return (cm.Option[RequestOptions])(cm.Some[RequestOptions](cm.Reinterpret[RequestOptions]((uint32)(f1))))
 }

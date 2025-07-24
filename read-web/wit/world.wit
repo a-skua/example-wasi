@@ -1,6 +1,11 @@
 package example:root;
 
-world runner {
+world read {
     include wasi:http/imports@0.2.5;
     include wasi:cli/command@0.2.5;
+}
+
+world omit-outgoing-handler {
+    include wasi:cli/imports@0.2.5;
+    export wasi:http/outgoing-handler@0.2.5;
 }
